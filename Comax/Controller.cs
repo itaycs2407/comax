@@ -27,14 +27,37 @@ namespace Comax
         public void start()
         {
             loadData();
-            loadDataToForm();
+            loadForm();
             this.mainForm.ShowDialog();
         }
 
-        private void loadDataToForm()
+        private void loadForm()
         {
             mainForm = new MainForm();
-            mainForm.loadDataToGrid(this.m_Database);
+            mainForm.InitController(this);
+            loadInitData();
+        }
+        public void loadInitData()
+        {
+            mainForm.InitDataGrid(this.m_Database);
+        }
+
+        internal List<Item> getItemsByName(string i_Text)
+        {
+            List<Item> nameIntersectionResult = new List<Item>();
+            this.m_Database.ForEach((item)=> {
+                if (item.Name.Contains(i_Text.TrimEnd().TrimStart()))
+                {
+                    nameIntersectionResult.Add(item);
+                }
+
+            });
+            if (nameIntersectionResult.Count < 1)
+            {
+                return null;
+            }
+
+            return nameIntersectionResult;
         }
     }
 }

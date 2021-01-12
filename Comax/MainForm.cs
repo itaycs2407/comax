@@ -16,10 +16,22 @@ namespace Comax
         }
 
         private DataTable m_DataTable = new DataTable();
+        private Controller ctrl;
 
-        internal void loadDataToGrid(List<Item> i_Database)
+        public void InitController(Controller i_Ctrl)
         {
+            this.ctrl = i_Ctrl;
+        }
+        internal void InitDataGrid(List<Item> i_Database)
+        {
+            m_DataTable = new DataTable();
             createHeaders();
+            loadData(i_Database);
+            
+        }
+
+        private void loadData(List<Item> i_Database)
+        {
             foreach (Item item in i_Database)
             {
                 this.m_DataTable.Rows.Add(item.Kod, item.Name, item.BarKod);
@@ -53,10 +65,6 @@ namespace Comax
 
        
 
-        private void txtName_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
 
         private void txtName_KeyDown(object sender, KeyEventArgs e)
         {
@@ -67,8 +75,30 @@ namespace Comax
                 {
                     MessageBox.Show("You didnt enter text in the text box", "Warning", MessageBoxButtons.OK);
                 }
+                else
+                {
+                    intersectionByName(txtName.Text);
+                }
 
             }
         }
+
+        private void intersectionByName(string i_Text)
+        {
+            List<Item> intersection = ctrl.getItemsByName(i_Text);
+            if (intersection != null)
+            {
+                this.m_DataTable = new DataTable();
+                InitDataGrid(intersection);
+            }
+            else
+            {
+                MessageBox.Show(string.Format(@"No item name contains the string : {0}", i_Text) , "Warning", MessageBoxButtons.OK);
+                this.ctrl.loadInitData();
+            }
+        }
+
+        
+
     }
 }
