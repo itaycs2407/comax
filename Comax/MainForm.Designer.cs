@@ -75,6 +75,7 @@ namespace Comax
             this.txtKod.Name = "txtKod";
             this.txtKod.Size = new System.Drawing.Size(192, 20);
             this.txtKod.TabIndex = 3;
+            this.txtKod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtKod.Enter += new System.EventHandler(this.txtKod_Enter);
             this.txtKod.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKod_KeyDown);
             this.txtKod.Leave += new System.EventHandler(this.txtKod_Leave);
@@ -85,6 +86,7 @@ namespace Comax
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(156, 20);
             this.txtName.TabIndex = 2;
+            this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtName.Enter += new System.EventHandler(this.txtName_Enter);
             this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             this.txtName.Leave += new System.EventHandler(this.txtName_KeyBlur);
