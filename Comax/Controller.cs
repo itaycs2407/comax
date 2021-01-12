@@ -9,29 +9,11 @@ namespace Comax
     {
         private List<Item> m_Database = new List<Item>();
         private MainForm m_MainForm;
+        private IDataLoader m_DataLoader = new XmlDataLoader();
 
         private void loadData()
         {
-            string filePath = Path.Combine(Directory.GetCurrentDirectory().ToString(), "xml_ex.xml");
-            using (XmlReader reader = XmlReader.Create(filePath))
-            {
-                if (reader != null)
-                {
-                    while (reader.ReadToFollowing("row"))
-                    {
-                        int kodAsInt;
-                        if (int.TryParse(reader.GetAttribute(0).ToString(), out kodAsInt))
-                        {
-                            Item item = new Item(kodAsInt, reader.GetAttribute(1), reader.GetAttribute(2));
-                            this.m_Database.Add(item);
-                        }
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("sdfgsdfdfghdfghd");
-                }
-            }
+            this.m_Database = m_DataLoader.loadDataFromDataSet();
         }
         public Controller() {}
 
@@ -55,13 +37,13 @@ namespace Comax
 
         public List<Item> getItemsByNameAndColumn(string i_Text, bool i_ByName)
         {
-            List<Item> nameIntersectionResult = new List<Item>();
+            List<Item> textIntersectionResult = new List<Item>();
             if (i_ByName == true)
             {
                 this.m_Database.ForEach((item)=> {
-                    if (item.Name.Contains(i_Text.TrimEnd().TrimStart()))
+                    if (item.Name.Contains(i_Text.Trim()))
                     {
-                        nameIntersectionResult.Add(item);
+                        textIntersectionResult.Add(item);
                     }
                 });
             }
@@ -69,20 +51,20 @@ namespace Comax
             {
                 this.m_Database.ForEach((item) =>
                 {
-                    int kodAsInt;
-                    if (int.TryParse(i_Text.TrimEnd().TrimStart(), out kodAsInt) && item.Kod == kodAsInt)
+                   
+                    if (item.Kod.Contains(i_Text.Trim()))
                     {
-                        nameIntersectionResult.Add(item);
+                        textIntersectionResult.Add(item);
                     }
                 });
             }
 
-            if (nameIntersectionResult.Count < 1)
+            if (textIntersectionResult.Count < 1)
             {
                 return null;
             }
 
-            return nameIntersectionResult;
+            return textIntersectionResult;
         }
     }
 }

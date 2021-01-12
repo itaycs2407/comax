@@ -42,18 +42,18 @@ namespace Comax
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(532, 45);
+            this.label1.Location = new System.Drawing.Point(456, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(24, 15);
+            this.label1.Size = new System.Drawing.Size(23, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "שם";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(273, 45);
+            this.label2.Location = new System.Drawing.Point(234, 39);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(24, 15);
+            this.label2.Size = new System.Drawing.Size(26, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "קוד";
             // 
@@ -63,27 +63,29 @@ namespace Comax
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(26, 22);
+            this.groupBox1.Location = new System.Drawing.Point(22, 19);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(593, 98);
+            this.groupBox1.Size = new System.Drawing.Size(508, 85);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
             // txtKod
             // 
-            this.txtKod.Location = new System.Drawing.Point(29, 37);
+            this.txtKod.Location = new System.Drawing.Point(25, 32);
             this.txtKod.Name = "txtKod";
-            this.txtKod.Size = new System.Drawing.Size(223, 23);
+            this.txtKod.Size = new System.Drawing.Size(192, 20);
             this.txtKod.TabIndex = 3;
+            this.txtKod.Enter += new System.EventHandler(this.txtKod_Enter);
             this.txtKod.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKod_KeyDown);
             this.txtKod.Leave += new System.EventHandler(this.txtKod_Leave);
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(345, 37);
+            this.txtName.Location = new System.Drawing.Point(296, 32);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(181, 23);
+            this.txtName.Size = new System.Drawing.Size(156, 20);
             this.txtName.TabIndex = 2;
+            this.txtName.Enter += new System.EventHandler(this.txtName_Enter);
             this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             this.txtName.Leave += new System.EventHandler(this.txtName_KeyBlur);
             // 
@@ -91,18 +93,20 @@ namespace Comax
             // 
             this.dgItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader;
             this.dgItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgItems.Location = new System.Drawing.Point(74, 151);
+            this.dgItems.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgItems.Location = new System.Drawing.Point(47, 128);
             this.dgItems.Name = "dgItems";
+            this.dgItems.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgItems.RowTemplate.Height = 25;
-            this.dgItems.Size = new System.Drawing.Size(478, 277);
+            this.dgItems.Size = new System.Drawing.Size(438, 240);
             this.dgItems.TabIndex = 1;
             this.dgItems.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgItems_ColumnHeaderMouseClick);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(652, 450);
+            this.ClientSize = new System.Drawing.Size(559, 390);
             this.Controls.Add(this.dgItems);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

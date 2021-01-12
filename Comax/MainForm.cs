@@ -69,7 +69,7 @@ namespace Comax
 
         private bool isInpurEmpty(string i_Input)
         {
-            return (i_Input.TrimEnd().TrimStart() == string.Empty);
+            return (i_Input.Trim() == string.Empty);
         }
 
         private void intersectionByData(string i_Text, bool i_ByName)
@@ -106,16 +106,11 @@ namespace Comax
                 }
                 else
                 {
-                    msgTextIsEmpty();
+                    this.m_Ctrl.loadInitData();
                 }
             }
         }
-        private void msgTextIsEmpty()
-        {
-            MessageBox.Show("You didnt enter text in the text box", "Warning", MessageBoxButtons.OK);
-        }
-
-
+        
         private void txtName_KeyBlur(object sender, EventArgs e)
         {
             TextBox txtName = (sender as TextBox);
@@ -125,7 +120,7 @@ namespace Comax
             }
             else
             {
-                msgTextIsEmpty();
+                this.m_Ctrl.loadInitData();
             }
         }
 
@@ -140,7 +135,7 @@ namespace Comax
                 }
                 else
                 {
-                    msgTextIsEmpty();
+                    this.m_Ctrl.loadInitData();
                 }
             }
         }
@@ -154,9 +149,18 @@ namespace Comax
             }
             else
             {
-                msgTextIsEmpty();
+                this.m_Ctrl.loadInitData();
             }
         }
 
+        private void txtKod_Enter(object sender, EventArgs e)
+        {
+            txtName.Text = string.Empty;
+        }
+
+        private void txtName_Enter(object sender, EventArgs e)
+        {
+            txtKod.Text = string.Empty;
+        }
     }
 }
