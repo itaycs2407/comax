@@ -40,10 +40,20 @@ namespace Comax
 
         private void createHeaders()
         {
-            m_DataTable.Columns.Add("קוד", typeof(string));
+            m_DataTable.Columns.Add("קוד", typeof(int));
             m_DataTable.Columns.Add("שם", typeof(string));
             m_DataTable.Columns.Add("ברקוד", typeof(string));
+            
+            this.dgItems.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
+            this.dgItems.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            this.dgItems.EnableHeadersVisualStyles = false;
+            
+            
             this.dgItems.DataSource = m_DataTable;
+            //for (int i = 0; i < this.dgItems.Columns.Count; i++)
+            //{
+            //    this.dgItems.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            //}
         }
 
         private void dgItems_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -63,24 +73,9 @@ namespace Comax
             }
         }
 
-       
-
-
-        private void txtName_KeyDown(object sender, KeyEventArgs e)
+        private bool isInpurEmpty(string i_Input)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                TextBox txtName = (sender as TextBox);
-                if (txtName.Text.TrimEnd().TrimStart() == string.Empty)
-                {
-                    MessageBox.Show("You didnt enter text in the text box", "Warning", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    intersectionByName(txtName.Text);
-                }
-
-            }
+            return (i_Input.TrimEnd().TrimStart() == string.Empty);
         }
 
         private void intersectionByName(string i_Text)
@@ -94,11 +89,43 @@ namespace Comax
             else
             {
                 MessageBox.Show(string.Format(@"No item name contains the string : {0}", i_Text) , "Warning", MessageBoxButtons.OK);
+                txtName.Text = string.Empty;
                 this.ctrl.loadInitData();
             }
         }
 
-        
+        private void txtName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                TextBox txtName = (sender as TextBox);
+                if (!isInpurEmpty(txtName.Text))
+                {
+                    intersectionByName(txtName.Text);
+                }
+                else
+                {
+                    msgTextIsEmpty();
+                }
+            }
+        }
+        private void msgTextIsEmpty()
+        {
+            MessageBox.Show("You didnt enter text in the text box", "Warning", MessageBoxButtons.OK);
+        }
 
+
+        private void txtName_KeyBlur(object sender, EventArgs e)
+        {
+            TextBox txtName = (sender as TextBox);
+            if (!isInpurEmpty(txtName.Text))
+            {
+                intersectionByName(txtName.Text);
+            }
+            else
+            {
+                msgTextIsEmpty();
+            }
+        }
     }
 }

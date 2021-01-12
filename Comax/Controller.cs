@@ -16,8 +16,13 @@ namespace Comax
             {
                 while (reader.ReadToFollowing("row"))
                 {
-                    Item item = new Item(reader.GetAttribute(0), reader.GetAttribute(1), reader.GetAttribute(2));
-                    this.m_Database.Add(item);
+                    int kodAsInt;
+                    if (int.TryParse(reader.GetAttribute(0).ToString(), out kodAsInt))
+                    {
+                        Item item = new Item(kodAsInt, reader.GetAttribute(1), reader.GetAttribute(2));
+                        this.m_Database.Add(item);
+
+                    }
                 }
             }
         }
