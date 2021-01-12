@@ -82,6 +82,7 @@ namespace Comax
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(181, 23);
             this.txtName.TabIndex = 2;
+            this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
             // dgItems
             // 
@@ -91,6 +92,7 @@ namespace Comax
             this.dgItems.RowTemplate.Height = 25;
             this.dgItems.Size = new System.Drawing.Size(593, 277);
             this.dgItems.TabIndex = 3;
+            this.dgItems.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgItems_ColumnHeaderMouseClick);
             // 
             // MainForm
             // 
