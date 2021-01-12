@@ -5,7 +5,6 @@ C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\bin\Debug\netcoreapp3.1\
 C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\bin\Debug\netcoreapp3.1\Comax.dll
 C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\bin\Debug\netcoreapp3.1\Comax.pdb
 C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\obj\Debug\netcoreapp3.1\Comax.csprojAssemblyReference.cache
-C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\obj\Debug\netcoreapp3.1\Comax.Form1.resources
 C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\obj\Debug\netcoreapp3.1\Comax.csproj.GenerateResource.cache
 C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\obj\Debug\netcoreapp3.1\Comax.AssemblyInfoInputs.cache
 C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\obj\Debug\netcoreapp3.1\Comax.AssemblyInfo.cs
@@ -13,3 +12,4 @@ C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\obj\Debug\netcoreapp3.1\
 C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\obj\Debug\netcoreapp3.1\Comax.dll
 C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\obj\Debug\netcoreapp3.1\Comax.pdb
 C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\obj\Debug\netcoreapp3.1\Comax.genruntimeconfig.cache
+C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\obj\Debug\netcoreapp3.1\Comax.MainForm.resources

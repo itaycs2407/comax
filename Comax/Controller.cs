@@ -8,6 +8,7 @@ namespace Comax
     public class Controller
     {
         private List<Item> m_Database = new List<Item>();
+        private MainForm mainForm;
 
         private void loadData()
         {
@@ -26,6 +27,14 @@ namespace Comax
         public void start()
         {
             loadData();
+            loadDataToForm();
+            this.mainForm.ShowDialog();
+        }
+
+        private void loadDataToForm()
+        {
+            mainForm = new MainForm();
+            mainForm.loadDataToGrid(this.m_Database);
         }
     }
 }
