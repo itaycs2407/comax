@@ -1,0 +1,11 @@
+C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\bin\Debug\net46\Comax.exe.config
+C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\bin\Debug\net46\Comax.exe
+C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\bin\Debug\net46\Comax.pdb
+C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\obj\Debug\net46\Comax.csprojAssemblyReference.cache
+C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\obj\Debug\net46\Comax.MainForm.resources
+C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\obj\Debug\net46\Comax.csproj.GenerateResource.cache
+C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\obj\Debug\net46\Comax.AssemblyInfoInputs.cache
+C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\obj\Debug\net46\Comax.AssemblyInfo.cs
+C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\obj\Debug\net46\Comax.csproj.CoreCompileInputs.cache
+C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\obj\Debug\net46\Comax.exe
+C:\Users\Itay Cohen\Desktop\Projects\ComaxWinForm\Comax\obj\Debug\net46\Comax.pdb

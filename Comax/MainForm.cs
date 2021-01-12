@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Comax
@@ -16,11 +14,11 @@ namespace Comax
         }
 
         private DataTable m_DataTable = new DataTable();
-        private Controller ctrl;
+        private Controller m_Ctrl;
 
         public void InitController(Controller i_Ctrl)
         {
-            this.ctrl = i_Ctrl;
+            this.m_Ctrl = i_Ctrl;
         }
         
         internal void InitDataGrid(List<Item> i_Database)
@@ -38,7 +36,7 @@ namespace Comax
             }
         }
 
-        // add all the info for the headers
+        // add all the info for the column headers
         private void createHeaders()
         {
             m_DataTable.Columns.Add("קוד", typeof(int));
@@ -76,7 +74,7 @@ namespace Comax
 
         private void intersectionByData(string i_Text, bool i_ByName)
         {
-            List<Item> intersection = ctrl.getItemsByNameAndColumn(i_Text, i_ByName);
+            List<Item> intersection = m_Ctrl.getItemsByNameAndColumn(i_Text, i_ByName);
             if (intersection != null)
             {
                 this.m_DataTable = new DataTable();
@@ -93,8 +91,7 @@ namespace Comax
                 {
                     txtKod.Text = string.Empty;
                 }
-                
-                this.ctrl.loadInitData();
+                this.m_Ctrl.loadInitData();
             }
         }
 

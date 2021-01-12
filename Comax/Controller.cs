@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.IO;
 using System.Xml;
 
 namespace Comax
@@ -8,46 +8,52 @@ namespace Comax
     public class Controller
     {
         private List<Item> m_Database = new List<Item>();
-        private MainForm mainForm;
+        private MainForm m_MainForm;
 
         private void loadData()
         {
-            using (XmlReader reader = XmlReader.Create(@"xml_ex.xml"))
+            string filePath = Path.Combine(Directory.GetCurrentDirectory().ToString(), "xml_ex.xml");
+            using (XmlReader reader = XmlReader.Create(filePath))
             {
-                while (reader.ReadToFollowing("row"))
+                if (reader != null)
                 {
-                    int kodAsInt;
-                    if (int.TryParse(reader.GetAttribute(0).ToString(), out kodAsInt))
+                    while (reader.ReadToFollowing("row"))
                     {
-                        Item item = new Item(kodAsInt, reader.GetAttribute(1), reader.GetAttribute(2));
-                        this.m_Database.Add(item);
-
+                        int kodAsInt;
+                        if (int.TryParse(reader.GetAttribute(0).ToString(), out kodAsInt))
+                        {
+                            Item item = new Item(kodAsInt, reader.GetAttribute(1), reader.GetAttribute(2));
+                            this.m_Database.Add(item);
+                        }
                     }
+                }
+                else
+                {
+                    Console.WriteLine("sdfgsdfdfghdfghd");
                 }
             }
         }
-        public Controller() { }
-        
+        public Controller() {}
 
-        public void start()
+        public void Start()
         {
             loadData();
             loadForm();
-            this.mainForm.ShowDialog();
+            this.m_MainForm.ShowDialog();
         }
 
         private void loadForm()
         {
-            mainForm = new MainForm();
-            mainForm.InitController(this);
+            m_MainForm = new MainForm();
+            m_MainForm.InitController(this);
             loadInitData();
         }
         public void loadInitData()
         {
-            mainForm.InitDataGrid(this.m_Database);
+            m_MainForm.InitDataGrid(this.m_Database);
         }
 
-        internal List<Item> getItemsByNameAndColumn(string i_Text, bool i_ByName)
+        public List<Item> getItemsByNameAndColumn(string i_Text, bool i_ByName)
         {
             List<Item> nameIntersectionResult = new List<Item>();
             if (i_ByName == true)
@@ -57,7 +63,6 @@ namespace Comax
                     {
                         nameIntersectionResult.Add(item);
                     }
-
                 });
             }
             else
@@ -69,9 +74,9 @@ namespace Comax
                     {
                         nameIntersectionResult.Add(item);
                     }
-
                 });
             }
+
             if (nameIntersectionResult.Count < 1)
             {
                 return null;
