@@ -75,6 +75,8 @@ namespace Comax
             this.txtKod.Name = "txtKod";
             this.txtKod.Size = new System.Drawing.Size(223, 23);
             this.txtKod.TabIndex = 3;
+            this.txtKod.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKod_KeyDown);
+            this.txtKod.Leave += new System.EventHandler(this.txtKod_Leave);
             // 
             // txtName
             // 
@@ -103,8 +105,12 @@ namespace Comax
             this.ClientSize = new System.Drawing.Size(652, 450);
             this.Controls.Add(this.dgItems);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MainForm";
-            this.Text = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Items Viewer ";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgItems)).EndInit();

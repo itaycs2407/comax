@@ -47,16 +47,31 @@ namespace Comax
             mainForm.InitDataGrid(this.m_Database);
         }
 
-        internal List<Item> getItemsByName(string i_Text)
+        internal List<Item> getItemsByNameAndColumn(string i_Text, bool i_ByName)
         {
             List<Item> nameIntersectionResult = new List<Item>();
-            this.m_Database.ForEach((item)=> {
-                if (item.Name.Contains(i_Text.TrimEnd().TrimStart()))
-                {
-                    nameIntersectionResult.Add(item);
-                }
+            if (i_ByName == true)
+            {
+                this.m_Database.ForEach((item)=> {
+                    if (item.Name.Contains(i_Text.TrimEnd().TrimStart()))
+                    {
+                        nameIntersectionResult.Add(item);
+                    }
 
-            });
+                });
+            }
+            else
+            {
+                this.m_Database.ForEach((item) =>
+                {
+                    int kodAsInt;
+                    if (int.TryParse(i_Text.TrimEnd().TrimStart(), out kodAsInt) && item.Kod == kodAsInt)
+                    {
+                        nameIntersectionResult.Add(item);
+                    }
+
+                });
+            }
             if (nameIntersectionResult.Count < 1)
             {
                 return null;

@@ -22,12 +22,12 @@ namespace Comax
         {
             this.ctrl = i_Ctrl;
         }
+        
         internal void InitDataGrid(List<Item> i_Database)
         {
             m_DataTable = new DataTable();
             createHeaders();
             loadData(i_Database);
-            
         }
 
         private void loadData(List<Item> i_Database)
@@ -38,6 +38,7 @@ namespace Comax
             }
         }
 
+        // add all the info for the headers
         private void createHeaders()
         {
             m_DataTable.Columns.Add("קוד", typeof(int));
@@ -48,12 +49,7 @@ namespace Comax
             this.dgItems.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             this.dgItems.EnableHeadersVisualStyles = false;
             
-            
             this.dgItems.DataSource = m_DataTable;
-            //for (int i = 0; i < this.dgItems.Columns.Count; i++)
-            //{
-            //    this.dgItems.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            //}
         }
 
         private void dgItems_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -78,9 +74,9 @@ namespace Comax
             return (i_Input.TrimEnd().TrimStart() == string.Empty);
         }
 
-        private void intersectionByName(string i_Text)
+        private void intersectionByData(string i_Text, bool i_ByName)
         {
-            List<Item> intersection = ctrl.getItemsByName(i_Text);
+            List<Item> intersection = ctrl.getItemsByNameAndColumn(i_Text, i_ByName);
             if (intersection != null)
             {
                 this.m_DataTable = new DataTable();
@@ -101,7 +97,7 @@ namespace Comax
                 TextBox txtName = (sender as TextBox);
                 if (!isInpurEmpty(txtName.Text))
                 {
-                    intersectionByName(txtName.Text);
+                    intersectionByData(txtName.Text, true);
                 }
                 else
                 {
@@ -120,7 +116,36 @@ namespace Comax
             TextBox txtName = (sender as TextBox);
             if (!isInpurEmpty(txtName.Text))
             {
-                intersectionByName(txtName.Text);
+                intersectionByData(txtName.Text, true);
+            }
+            else
+            {
+                msgTextIsEmpty();
+            }
+        }
+
+        private void txtKod_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                TextBox txtName = (sender as TextBox);
+                if (!isInpurEmpty(txtName.Text))
+                {
+                    intersectionByData(txtName.Text, false);
+                }
+                else
+                {
+                    msgTextIsEmpty();
+                }
+            }
+        }
+
+        private void txtKod_Leave(object sender, EventArgs e)
+        {
+            TextBox txtName = (sender as TextBox);
+            if (!isInpurEmpty(txtName.Text))
+            {
+                intersectionByData(txtName.Text, false);
             }
             else
             {
