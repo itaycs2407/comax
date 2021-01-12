@@ -12,7 +12,7 @@ namespace Comax
 
         private void loadData()
         {
-            using (XmlReader reader = XmlReader.Create(@"C:\Users\Itay Cohen\Downloads\test.xml"))
+            using (XmlReader reader = XmlReader.Create(@"xml_ex.xml"))
             {
                 while (reader.ReadToFollowing("row"))
                 {

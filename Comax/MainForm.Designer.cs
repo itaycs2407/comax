@@ -91,10 +91,10 @@ namespace Comax
             // 
             this.dgItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader;
             this.dgItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgItems.Location = new System.Drawing.Point(26, 150);
+            this.dgItems.Location = new System.Drawing.Point(74, 151);
             this.dgItems.Name = "dgItems";
             this.dgItems.RowTemplate.Height = 25;
-            this.dgItems.Size = new System.Drawing.Size(593, 277);
+            this.dgItems.Size = new System.Drawing.Size(478, 277);
             this.dgItems.TabIndex = 1;
             this.dgItems.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgItems_ColumnHeaderMouseClick);
             // 

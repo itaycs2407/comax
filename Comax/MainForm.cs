@@ -34,7 +34,7 @@ namespace Comax
         {
             foreach (Item item in i_Database)
             {
-                this.m_DataTable.Rows.Add(item.Kod, item.Name, item.BarKod);
+                this.m_DataTable.Rows.Add(item.Kod,item.BarKod, item.Name);
             }
         }
 
@@ -42,8 +42,8 @@ namespace Comax
         private void createHeaders()
         {
             m_DataTable.Columns.Add("קוד", typeof(int));
-            m_DataTable.Columns.Add("שם", typeof(string));
             m_DataTable.Columns.Add("ברקוד", typeof(string));
+            m_DataTable.Columns.Add("שם", typeof(string));
             
             this.dgItems.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
             this.dgItems.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
@@ -85,7 +85,15 @@ namespace Comax
             else
             {
                 MessageBox.Show(string.Format(@"No item name contains the string : {0}", i_Text) , "Warning", MessageBoxButtons.OK);
-                txtName.Text = string.Empty;
+                if (i_ByName)
+                {
+                    txtName.Text = string.Empty;
+                }
+                else
+                {
+                    txtKod.Text = string.Empty;
+                }
+                
                 this.ctrl.loadInitData();
             }
         }
@@ -152,5 +160,6 @@ namespace Comax
                 msgTextIsEmpty();
             }
         }
+
     }
 }
